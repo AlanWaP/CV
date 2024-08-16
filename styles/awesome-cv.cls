@@ -152,9 +152,13 @@
 \setbool{acvSectionColorHighlight}{true}
 
 % Awesome section color
-\def\@sectioncolor#1#2#3{%
-  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
+%\def\@sectioncolor#1#2#3{%
+%  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
+%}
+\def\@sectioncolor#1{%
+	\ifbool{acvSectionColorHighlight}{{\color{awesome}#1}}{#1}%
 }
+
 
 
 %-------------------------------------------------------------------------------
@@ -376,7 +380,7 @@
 
 % Others
 \newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
+\newcommand{\acvSectionContentTopSkip}{-2.0mm}
 
 
 %-------------------------------------------------------------------------------
@@ -564,7 +568,7 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{2mm}
+  \vspace{2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
@@ -649,6 +653,17 @@
   \vspace{-4.0mm}
 }
 
+% Define an environment for single item(for cventry)
+\newcommand*{\cvitem}[1]{%
+	\vspace{-4.0mm}
+	\begin{justify}
+		\begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+			\setlength{\parskip}{0pt}
+			\renewcommand{\labelitemi}{\bullet}
+			\item #1
+		\end{itemize}
+	\end{justify}
+}
 
 %-------------------------------------------------------------------------------
 %                Commands for elements of Cover Letter
